@@ -1,4 +1,4 @@
-﻿
+﻿#include "extras/protobuf/ProtobufLibs.h"
 #include "ChannelManager.h"
 #include "Logger.h"
 
