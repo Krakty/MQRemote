@@ -1,4 +1,4 @@
-﻿
+﻿#include "mq/contrib/protobuf/ProtobufLibs.h"
 #include "ChannelManager.h"
 #include "Logger.h"
 
