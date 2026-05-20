@@ -81,6 +81,10 @@ target_link_libraries(MQRemote PRIVATE
     pluginapi
     MQ2Main
     MQRemote-proto
+    # routing publishes its proto-generated BINARY_DIR via routing-proto's
+    # PUBLIC include_directories. Linking it gives us mq/routing/Routing.h
+    # along with its #include "Routing.pb.h" sibling.
+    routing
 )
 
 # ---------------------------------------------------------------------
