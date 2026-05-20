@@ -52,16 +52,16 @@ target_link_libraries(MQRemote-proto PUBLIC
 )
 
 target_include_directories(MQRemote-proto PUBLIC
-    "$<TARGET_PROPERTY:MQRemote-proto,BINARY_DIR>"
+    "${CMAKE_CURRENT_BINARY_DIR}"
 )
 
-# Generate .pb.cc / .pb.h next to the object library's binary dir so the
-# include path above resolves them. protobuf_generate auto-adds the
-# generated sources to the target.
+# Generate .pb.cc / .pb.h into the current binary dir. PROTOC_OUT_DIR must
+# be a plain path -- protobuf_generate's add_custom_command can't evaluate
+# $<TARGET_PROPERTY:...> generator expressions for OUTPUT paths.
 protobuf_generate(
     TARGET MQRemote-proto
     LANGUAGE cpp
-    PROTOC_OUT_DIR "$<TARGET_PROPERTY:MQRemote-proto,BINARY_DIR>"
+    PROTOC_OUT_DIR "${CMAKE_CURRENT_BINARY_DIR}"
 )
 
 # ---------------------------------------------------------------------
